@@ -8,7 +8,9 @@ import com.javaworld.sample.service.HelloService;
 
 public class Activator implements BundleActivator {
 
-	ServiceReference<HelloService> helloServiceReference;
+	// private ServiceReference<HelloService> helloServiceReference;
+
+	private HelloServiceTracker helloServiceTracker;
 
 	/*
 	 * (non-Javadoc)
@@ -17,16 +19,21 @@ public class Activator implements BundleActivator {
 	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
 	 * )
 	 */
-	@SuppressWarnings("unchecked")
+	// @SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception {
 		System.out.println("Hello World!!");
 
-		helloServiceReference = (ServiceReference<HelloService>) context
-				.getServiceReference(HelloService.class.getName());
+		// helloServiceReference = (ServiceReference<HelloService>) context
+		// .getServiceReference(HelloService.class.getName());
+		//
+		// HelloService helloService = (HelloService) context
+		// .getService(helloServiceReference);
 
-		HelloService helloService = (HelloService) context
-				.getService(helloServiceReference);
-		
+		helloServiceTracker = new HelloServiceTracker(context);
+		helloServiceTracker.open();
+		HelloService helloService = (HelloService) helloServiceTracker
+				.getService();
+
 		System.out.println(helloService.sayHello());
 	}
 
@@ -38,7 +45,8 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		System.out.println("Goodbye World!!");
-		context.ungetService(helloServiceReference);
+		// context.ungetService(helloServiceReference);
+		helloServiceTracker.close();
 	}
 
 }
