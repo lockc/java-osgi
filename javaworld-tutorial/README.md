@@ -12,4 +12,4 @@ Part 2 of the tutorial uses Spring DM which today is a 'dead' project, it seems 
 N.B.
 This requires the Plug-in Development Environment within Eclipse.  
 
-Also I had to add the following JVM argument to avoid connection issues with 0.0.0.0:80 - _-Dorg.osgi.service.http.port=8380_
+Also I had to add the following JVM argument when running the examples to avoid connection issues with 0.0.0.0:80 - _-Dorg.osgi.service.http.port=8380_
