@@ -81,24 +81,17 @@
                         <Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
                         <Bundle-Version>1.0.0</Bundle-Version>
-
+                        <Bundle-Activator>lockc.osgi.examples.springbundle.Activator</Bundle-Activator>
                         <Export-Package>
-                            lockc.osgi.examples.springbundle.api,
-                            lockc.osgi.examples.springbundle.annotations
-                        </Export-Package>
-                        <Private-Package>
-                            lockc.osgi.examples.springbundle.*,
+                            lockc.osgi.examples.springbundle,
                             org.springframework.*,
                             org.reflections.*,
                             org.apache.commons.logging.*,
                             org.aopalliance.*,
-                            com.google.common.*,
-                            *
-                        </Private-Package>
-                        <Bundle-Activator>lockc.osgi.examples.springbundle.Activator</Bundle-Activator>
+                            com.google.common.*
+                        </Export-Package>
                         <Import-Package>
                             org.osgi.framework,
-                            lockc.osgi.examples.springbundle.annotations,
                             *;resolution:=optional
                         </Import-Package>
                     </instructions>
