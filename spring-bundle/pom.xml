@@ -10,29 +10,15 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring.version>4.1.4.RELEASE</spring.version>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.1.RELEASE</version>
-    </parent>
 
     <dependencies>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -40,22 +26,6 @@
             <artifactId>org.osgi.core</artifactId>
             <version>6.0.0</version>
         </dependency>
-
-        <!-- <dependency> <groupId>org.osgi</groupId> <artifactId>org.osgi.enterprise</artifactId> 
-            <version>5.0.0</version> </dependency> -->
-
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.9.9-RC1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
-        </dependency>
-
 
     </dependencies>
 
@@ -80,16 +50,16 @@
                     <instructions>
                         <Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
-                        <Bundle-Version>1.0.0</Bundle-Version>
+                        <Bundle-Version>${spring.version}</Bundle-Version>
                         <Bundle-Activator>lockc.osgi.examples.springbundle.Activator</Bundle-Activator>
                         <Export-Package>
-                            lockc.osgi.examples.springbundle,
-                            org.springframework.*,
-                            org.reflections.*,
-                            org.apache.commons.logging.*,
-                            org.aopalliance.*,
-                            com.google.common.*
+                            !org.osgi.*,
+                            !lockc.osgi.examples.springbundle,
+                            *
                         </Export-Package>
+                        <Private-Package>
+                            lockc.osgi.examples.springbundle
+                        </Private-Package>
                         <Import-Package>
                             org.osgi.framework,
                             *;resolution:=optional
@@ -101,3 +71,4 @@
     </build>
 </project>
 
+<!-- _exportcontents: org.springframework.* -->

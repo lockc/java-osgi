@@ -8,11 +8,12 @@ public class Activator implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
     
-        // SpringBundle.run(this.getClass(), context);
+        System.out.println("Starting Spring bundle.");
     }
     
     @Override
     public void stop(BundleContext context) throws Exception {
     
+        System.out.println("Stopping Spring bundle.");
     }
 }
