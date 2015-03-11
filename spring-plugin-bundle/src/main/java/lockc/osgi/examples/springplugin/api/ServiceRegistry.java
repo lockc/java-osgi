@@ -12,8 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-@Component
-public class ServiceRegistry implements ApplicationContextAware {
+public abstract class ServiceRegistry implements ApplicationContextAware {
     
     private ApplicationContext applicationContext;
     
@@ -23,12 +22,12 @@ public class ServiceRegistry implements ApplicationContextAware {
         System.out.println("Constructed: " + this.getClass().getName());
     }
     
-    public ServiceRegistry init(BundleContext context, Class<?> basePackageClass) {
+    public ServiceRegistry init(BundleContext context, Class<?> source) {
         
         
         System.out.println("Registering services");
         
-//        Reflections reflections = new Reflections(basePackageClass.getClassLoader());
+//        Reflections reflections = new Reflections(source.getClassLoader());
 //        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(RegisteredService.class);
 //        
 //        for (Class<?> clazz : annotated) {

@@ -12,7 +12,7 @@ public class Activator implements BundleActivator {
         
         System.out.println("Starting " + this.getClass().getName());
         
-        SpringBundleApplication.run(getClass(), context);
+//        SpringBundleApplication.run(TestClass.class, context);
     }
     
     @Override

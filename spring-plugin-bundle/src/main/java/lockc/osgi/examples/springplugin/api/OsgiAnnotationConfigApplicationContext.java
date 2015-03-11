@@ -19,31 +19,24 @@ public class OsgiAnnotationConfigApplicationContext extends GenericApplicationCo
     
     private ResourcePatternResolver resourceLoader;
     
-    public OsgiAnnotationConfigApplicationContext(BundleContext bundleContext, Class<?> clazz) {
+    public OsgiAnnotationConfigApplicationContext(BundleContext bundleContext, Class<?> source) {
     
         ClassLoader original = Thread.currentThread().getContextClassLoader();
         try {
-            Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
             
-            resourceLoader = new OsgiResourceLoader(bundleContext, getClass().getClassLoader());
+            ClassLoader classLoader = source.getClassLoader();
             
+            Thread.currentThread().setContextClassLoader(classLoader);
+            
+            resourceLoader = new OsgiResourceLoader(bundleContext, classLoader);
             setResourceLoader(resourceLoader);
-            
-            setClassLoader(getClass().getClassLoader());
-            
+            setClassLoader(classLoader);
             reader = new AnnotatedBeanDefinitionReader(this);
             scanner = new ClassPathBeanDefinitionScanner(this);
             scanner.setResourceLoader(resourceLoader);
             
-            
-            
-            scan(this.getClass().getPackage().getName());
+            scan(source.getPackage().getName());
             refresh();
-            
-            
-            
-            
-            
         }
         catch (Exception e) {
             e.printStackTrace();
