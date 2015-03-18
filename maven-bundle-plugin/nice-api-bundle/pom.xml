@@ -25,10 +25,9 @@
 
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <artifactId>slf4j-api</artifactId>
             <version>1.7.10</version>
         </dependency>
-
 
         <!-- Test Dependencies -->
 
@@ -60,7 +59,8 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Including this means Pax Exam will use Apache Felix as the OSGi runtime for testing -->
+        <!-- Including this means Pax Exam will use Apache Felix as the OSGi 
+            runtime for testing -->
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.framework</artifactId>
@@ -125,7 +125,6 @@
                         <Import-Package>
                             org.osgi.framework;version=1.0.0,
                             org.slf4j,
-                            org.apache.log4j,
                             *;resolution:=optional
                         </Import-Package>
                     </instructions>
@@ -150,7 +149,8 @@
                 <executions>
                     <execution>
                         <id>bundle-integration-test</id>
-                        <!-- bind to the install phase so our bundle will be installed prior to tests running -->
+                        <!-- bind to the install phase so our bundle will 
+                            be installed prior to tests running -->
                         <phase>install</phase>
                         <goals>
                             <goal>integration-test</goal>

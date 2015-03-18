@@ -24,7 +24,8 @@ public class Options {
         return composite(
                 mavenBundle( "org.slf4j", "slf4j-api", "1.7.10" ),
                 mavenBundle( "org.slf4j", "slf4j-log4j12", "1.7.10").noStart(),
-                mavenBundle( "log4j", "log4j", "1.2.17" ));
+                mavenBundle( "log4j", "log4j", "1.2.17" )
+                );
         //@formatter:on
     }
     

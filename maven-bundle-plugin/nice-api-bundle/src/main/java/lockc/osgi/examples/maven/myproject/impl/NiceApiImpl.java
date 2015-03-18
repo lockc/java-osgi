@@ -13,14 +13,12 @@ public class NiceApiImpl implements NiceApi {
     @Override
     public void sayHello(String name) {
     
-        System.out.println("Hello " + name);
         LOG.info("Hello " + name);
     }
     
     @Override
     public int gimmeSomeMoney(int howMuch) {
     
-        System.out.println("You can have that much and 100 quid more!  How nice of me.");
         LOG.info("You can have that much and 100 quid more!  How nice of me.");
         return howMuch + 100;
     }

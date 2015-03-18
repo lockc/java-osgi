@@ -58,11 +58,16 @@ public class NiceApiServiceTest {
     }
     
     @Test
-    public void testNiceApiService() throws BundleException {
+    public void testNiceApiServiceGimmeSomeMoney() throws BundleException {
     
         int given = niceApiService.gimmeSomeMoney(300);
-        System.out.println("you were given £" + given);
         assertEquals(400, given);
+    }
+    
+    @Test
+    public void testNiceApiServiceSayHello() throws BundleException {
+    
+        niceApiService.sayHello("Chris");
     }
     
     private Bundle getBundle(BundleContext _bundleContext, String symbolicName) {

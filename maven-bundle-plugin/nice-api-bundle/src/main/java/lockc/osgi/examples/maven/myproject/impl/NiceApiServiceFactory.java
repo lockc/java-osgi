@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class NiceApiServiceFactory implements ServiceFactory<NiceApi> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NiceApiImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NiceApiServiceFactory.class);
     
     @Override
     public NiceApi getService(Bundle bundle, ServiceRegistration<NiceApi> registration) {
