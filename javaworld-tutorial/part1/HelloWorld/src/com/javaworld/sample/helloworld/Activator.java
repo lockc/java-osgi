@@ -19,15 +19,11 @@ public class Activator implements BundleActivator {
 	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
 	 * )
 	 */
-	// @SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception {
 		System.out.println("Hello World!!");
 
-		// helloServiceReference = (ServiceReference<HelloService>) context
-		// .getServiceReference(HelloService.class.getName());
-		//
-		// HelloService helloService = (HelloService) context
-		// .getService(helloServiceReference);
+		// helloServiceReference = (ServiceReference<HelloService>) context.getServiceReference(HelloService.class.getName());
+		// HelloService helloService = (HelloService) context.getService(helloServiceReference);
 
 		helloServiceTracker = new HelloServiceTracker(context);
 		helloServiceTracker.open();

@@ -7,7 +7,7 @@ import org.osgi.framework.ServiceRegistration;
 import com.javaworld.sample.service.HelloService;
 
 public class HelloServiceActivator implements BundleActivator {
-	ServiceRegistration<HelloService> helloServiceRegistration;
+	private ServiceRegistration<HelloService> helloServiceRegistration;
 
 	@SuppressWarnings("unchecked")
 	public void start(BundleContext context) throws Exception {

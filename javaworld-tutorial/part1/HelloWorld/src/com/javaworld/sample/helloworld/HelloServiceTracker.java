@@ -12,10 +12,13 @@ public class HelloServiceTracker extends ServiceTracker<HelloService, Object> {
 		super(context, HelloService.class.getName(),null);
 	}
 	
+	@Override
 	public Object addingService(ServiceReference<HelloService> reference) {
         System.out.println("Inside HelloServiceTracker.addingService " + reference.getBundle());
         return super.addingService(reference);
     }
+	
+	@Override
     public void removedService(ServiceReference<HelloService> reference, Object service) {
         System.out.println("Inside HelloServiceTracker.removedService " + reference.getBundle());
         super.removedService(reference, service);

@@ -27,7 +27,6 @@ public class OsgiAnnotationConfigApplicationContext extends GenericApplicationCo
             ClassLoader classLoader = source.getClassLoader();
             
             Thread.currentThread().setContextClassLoader(classLoader);
-            
             resourceLoader = new OsgiResourceLoader(bundleContext, classLoader);
             setResourceLoader(resourceLoader);
             setClassLoader(classLoader);

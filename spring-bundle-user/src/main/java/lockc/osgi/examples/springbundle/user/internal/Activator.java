@@ -1,6 +1,5 @@
 package lockc.osgi.examples.springbundle.user.internal;
 
-import lockc.osgi.examples.springbundle.user.api.NiceApi;
 import lockc.osgi.examples.springplugin.api.SpringBundleApplication;
 
 import org.osgi.framework.BundleActivator;

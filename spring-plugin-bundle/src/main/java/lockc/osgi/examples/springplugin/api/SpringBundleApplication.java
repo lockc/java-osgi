@@ -9,6 +9,7 @@ public class SpringBundleApplication {
     
         OsgiAnnotationConfigApplicationContext ctx = 
                 new OsgiAnnotationConfigApplicationContext(context, source);
+                
         ServiceRegistry sr = ctx.getBean(ServiceRegistry.class);
         sr.init(context, source);
         
