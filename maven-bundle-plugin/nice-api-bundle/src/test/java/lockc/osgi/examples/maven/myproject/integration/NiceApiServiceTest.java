@@ -1,7 +1,8 @@
-package lockc.osgi.examples.maven.myproject;
+package lockc.osgi.examples.maven.myproject.integration;
 
 import static org.junit.Assert.*;
 import static org.ops4j.pax.exam.CoreOptions.*;
+import static lockc.osgi.examples.maven.myproject.integration.Options.*;
 
 import javax.inject.Inject;
 
@@ -33,10 +34,11 @@ public class NiceApiServiceTest {
     
         //@formatter:off
         return new Option[] {
+                cleanCaches(true),
                 junitBundles(),
+                ariesBundles(),
+                logBundles(),
                 mavenBundle("lockc.osgi.examples", "nice-api-bundle", "1.0-SNAPSHOT"),
-                cleanCaches(true)
-                
         };
         //@formatter:on
     }
@@ -73,4 +75,6 @@ public class NiceApiServiceTest {
         }
         throw new IllegalArgumentException("Bundle not installed");
     }
+    
+    
 }
