@@ -9,7 +9,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <ddf.version>2.6.0</ddf.version>
         <osgi.version>6.0.0</osgi.version>
 
@@ -55,13 +55,13 @@
             <type>zip</type>
             <scope>test</scope>
         </dependency>
-
-       <!--  <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
-            <version>${exam.version}</version>
+        
+        <dependency>
+            <groupId>org.apache.karaf.shell</groupId>
+            <artifactId>org.apache.karaf.shell.osgi</artifactId>
+            <version>2.3.8</version>
             <scope>test</scope>
-        </dependency> -->
+        </dependency>
         
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
@@ -97,13 +97,6 @@
             <version>${url.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>4.4.1</version>
-            <scope>test</scope>
-        </dependency> -->
 
         <dependency>
             <groupId>javax.inject</groupId>

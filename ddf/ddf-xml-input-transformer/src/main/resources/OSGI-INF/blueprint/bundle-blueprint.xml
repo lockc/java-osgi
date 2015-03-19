@@ -7,9 +7,15 @@
     <service ref="sampleXmlInputTransformer" id="sampleXmlInputTransformerService"
         interface="ddf.catalog.transform.InputTransformer">
         <service-properties>
-            <entry key="shortname" value="Sample XML Input Transformer" />
+            <entry key="shortname" value="MySampleXML" />
             <entry key="title" value="Sample XML Input Transformer" />
             <entry key="description" value="A sample XML input transformer to demonstrate writing a DDF bundle" />
+            <entry key="id" value="anyxml" />
+            <entry key="mime-type">
+                <list>
+                    <value>application/xml</value>
+                </list>
+            </entry>
         </service-properties>
     </service>
 

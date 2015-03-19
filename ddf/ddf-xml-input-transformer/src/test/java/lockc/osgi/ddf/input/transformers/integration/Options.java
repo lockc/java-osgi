@@ -15,36 +15,13 @@ import java.util.concurrent.TimeUnit;
 
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption;
-import org.ops4j.pax.exam.util.PathUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class Options {
     
-    public static Option ariesBundles() {
-    
-        //@formatter:off
-        return composite(
-                mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint.core", "1.4.3"),
-                mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint.api", "1.0.1"),
-                mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint.cm", "1.0.6"),
-                mavenBundle("org.apache.aries", "org.apache.aries.util", "1.1.0"),
-                mavenBundle("org.apache.aries.proxy", "org.apache.aries.proxy", "1.0.1"));
-        //@formatter:on
-    }
-    
-    public static Option logBundles() {
-    
-        //@formatter:off
-        return composite(
-                mavenBundle( "org.slf4j", "slf4j-api", "1.7.10" ),
-                mavenBundle( "org.slf4j", "slf4j-log4j12", "1.7.10").noStart(),
-                mavenBundle( "org.slf4j", "slf4j-ext", "1.7.10"),
-                mavenBundle( "log4j", "log4j", "1.2.17"),
-                mavenBundle( "ch.qos.cal10n", "cal10n-api", "0.8.1")
-                );
-        //@formatter:on
-    }
     
     public static Option configureDistribution() {
     
@@ -96,9 +73,10 @@ public class Options {
 //                replaceConfigurationFile("etc/ddf.security.sts.client.configuration.cfg",
 //                        new File(this.getClass()
 //                        .getResource("/ddf.security.sts.client.configuration.cfg").toURI())),
-//                replaceConfigurationFile("etc/ddf.catalog.solr.external.SolrHttpCatalogProvider.cfg",
-//                        new File(this.getClass()
-//                                .getResource("/ddf.catalog.solr.external.SolrHttpCatalogProvider.cfg").toURI()))
+                
+//                replaceConfigurationFile(
+//                        "etc/ddf.catalog.solr.external.SolrHttpCatalogProvider.cfg",
+//                        new File(Options.class.getClassLoader().getResource("/ddf.catalog.solr.external.SolrHttpCatalogProvider.cfg").toURI()))
             );
         //@formatter:on
     }
@@ -154,25 +132,20 @@ public class Options {
         //@formatter:on
     }
     
-    public static Option ddfRuntimeBundles() {
     
-        //@formatter:off
-        return composite(
-                mavenBundle("ddf.catalog.core", "catalog-core-api", "2.6.0"),
-                mavenBundle("ddf.catalog.core", "catalog-core-api-impl", "2.6.0"),
-                mavenBundle("ddf.mime.core", "mime-core-api", "2.6.0"),
-//                mavenBundle("ddf.mime.core", "mime-core-impl", "2.4.0"),
-                mavenBundle("org.osgi", "org.osgi.compendium", "4.3.1"),
-                mavenBundle("ddf.platform", "platform-configuration", "2.6.0"),
-                mavenBundle("javax.ws.rs", "javax.ws.rs-api", "2.0.1"),          
-                mavenBundle("org.opengis", "geoapi", "3.0.0"),
-                mavenBundle("javax.measure", "unit-api", "0.7"),
-                mavenBundle("org.apache.tika", "tika-core", "1.7"),
-                mavenBundle("commons-lang", "commons-lang", "2.6"),
-                mavenBundle("commons-io", "commons-io", "2.4")
-                );
-        //@formatter:on
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
     private static final int CONFIG_UPDATE_WAIT_INTERVAL = 5;
     
