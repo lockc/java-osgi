@@ -1,0 +1,36 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+
+    <!-- <localRepository>${user.home}/.m2/repository</localRepository> -->
+
+    <profiles>
+        <profile>
+            <id>IEP</id>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>releases</id>
+                    <name>ddf-release</name>
+                    <url>http://artifacts.codice.org/content/repositories/releases</url>
+                </repository>
+                
+                <repository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>ddf-snapshot</name>
+                    <url>http://artifacts.codice.org/content/repositories/snapshots</url>
+                </repository>
+            </repositories>
+            
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>IEP</activeProfile>
+    </activeProfiles>
+</settings>

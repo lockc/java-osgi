@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="sampleXmlInputTransformer"
+        class="lockc.osgi.ddf.input.transformers.impl.SampleXmlInputTransformer" />
+
+    <service ref="sampleXmlInputTransformer" id="sampleXmlInputTransformerService"
+        interface="ddf.catalog.transform.InputTransformer">
+        <service-properties>
+            <entry key="shortname" value="Sample XML Input Transformer" />
+            <entry key="title" value="Sample XML Input Transformer" />
+            <entry key="description" value="A sample XML input transformer to demonstrate writing a DDF bundle" />
+        </service-properties>
+    </service>
+
+</blueprint>
