@@ -1,13 +1,7 @@
 package lockc.osgi.ddf.input.transformers.integration;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFileExtend;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRuntimeFolder;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.replaceConfigurationFile;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.useOwnExamBundlesStartLevel;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.*;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -147,7 +141,6 @@ public class Options {
     
 
     
-    private static final int CONFIG_UPDATE_WAIT_INTERVAL = 5;
     
     public static final Logger LOGGER = LoggerFactory.getLogger(Options.class);
     
@@ -161,7 +154,6 @@ public class Options {
     
     public static final int FIVE_MINUTES_MILLIS = ONE_MINUTE_MILLIS * 5;
     
-    // TODO: Use the Camel AvailablePortFinder.getNextAvailable() test method
     public static final String HTTP_PORT = "9081";
     
     public static final String HTTPS_PORT = "9993";

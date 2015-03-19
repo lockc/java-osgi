@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.ops4j.pax.exam.CoreOptions.*;
 import static lockc.osgi.ddf.input.transformers.integration.Options.*;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,21 +13,19 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
-
+import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
-
 import org.apache.karaf.shell.osgi.BlueprintListener;
 import org.apache.karaf.shell.osgi.BlueprintListener.BlueprintState;
 
+import ddf.catalog.data.Metacard;
 import ddf.catalog.transform.InputTransformer;
 
 @RunWith(PaxExam.class)
@@ -36,8 +35,17 @@ public class SampleXmlInputTransformerServiceTest {
     @Inject
     private BundleContext bundleContext;
     
+    /*
+     * Inject our an input transformer, DDF has a few input transformers
+     * so identify ours by the service property 'id' (see in the blueprint.xml)  
+     */
     @Inject
+    @Filter("(id=anyxml)")
     private InputTransformer inputTransformerService;
+    
+    private BlueprintListener blueprintListener;
+    
+    private boolean beforeRan = false;
         
     @Configuration
     public Option[] config() throws Exception {
@@ -61,22 +69,40 @@ public class SampleXmlInputTransformerServiceTest {
     @Before
     public void beforeTest() throws Exception {
 
-        waitForAllBundles();
+        if(!beforeRan) {
+            /*
+             * The @BeforeClass does not work in Pax Exam so use a flag for
+             * one time set up tasks in the @Before method.
+             */
+            waitForAllBundles();
+            
+            beforeRan = true;
+        }
+        
     }
 
     @Test
-    public void checkInject() {
-    
+    public void checkInject() throws Exception {
         assertNotNull(bundleContext);
         assertNotNull(inputTransformerService);
     }
     
     @Test
-    public void testBundleActive() throws BundleException {
+    public void testBundleActive() throws Exception {
     
         Bundle b = getBundle(bundleContext, "lockc.osgi.ddf.examples.ddf-xml-input-transformer");
         assertEquals("Bundle state", Bundle.ACTIVE, b.getState());
     }
+    
+    @Test
+    public void testSampleXmlTransformerService() throws Exception {
+        
+        String xml = "<Random>some data</Random>";
+        ByteArrayInputStream in = new ByteArrayInputStream(xml.getBytes());
+        Metacard metacard = inputTransformerService.transform(in);
+        assertEquals(xml, metacard.getMetadata());
+    }
+    
     
     private Bundle getBundle(BundleContext _bundleContext, String symbolicName) {
     
@@ -89,25 +115,11 @@ public class SampleXmlInputTransformerServiceTest {
         throw new IllegalArgumentException("Bundle not installed");
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    private BlueprintListener blueprintListener;
-    
-    protected void waitForAllBundles() throws Exception {
+    private void waitForAllBundles() throws Exception {
         waitForRequiredBundles("");
     }
 
-    protected void waitForRequiredBundles(String symbolicNamePrefix) throws Exception {
+    private void waitForRequiredBundles(String symbolicNamePrefix) throws Exception {
         boolean ready = false;
         if (blueprintListener == null) {
             blueprintListener = new BlueprintListener();

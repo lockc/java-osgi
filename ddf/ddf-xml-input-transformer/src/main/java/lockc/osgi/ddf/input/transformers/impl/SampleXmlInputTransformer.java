@@ -11,10 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ddf.catalog.data.Metacard;
-import ddf.catalog.data.impl.MetacardImpl;
+import ddf.catalog.data.MetacardImpl;
 import ddf.catalog.transform.CatalogTransformerException;
 import ddf.catalog.transform.InputTransformer;
 
+@SuppressWarnings("deprecation")
 public class SampleXmlInputTransformer implements InputTransformer {
     
     private static final Logger LOG = LoggerFactory.getLogger(SampleXmlInputTransformer.class);
