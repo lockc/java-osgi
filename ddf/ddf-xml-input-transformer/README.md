@@ -11,9 +11,9 @@
 
 ### You'll Need:
 
-DDF v2.6.0
-Java SDK 7 (8 not supportd yet)
-Maven v3.x
+* DDF v2.6.0
+* Java SDK 7 (8 not supportd yet)
+* Maven v3.x
 
 ### Build & Test
 
@@ -29,7 +29,7 @@ If you wish to skip the integration tests (and subsequesntly the long build time
 
 ### Deploy to DDF Instance
 
-Once you have built the project we can now actually deploy the bundle into a proper running instance of DDF.
+Once you have built the project you can now actually deploy the bundle into a proper running instance of DDF.
 
 Assuming you have:
 
@@ -56,7 +56,7 @@ Your bundle should now be _ACTIVE_.  That's it, the new _InputTransformer_ shoul
 
 ### Using It
 
-Now that your bundle is ready to use lets see it in action.  If you want to see what DDF is doing you can watch the log files, from the command line run this
+Now that your bundle is ready to use lets see it in action.  If you want to see what DDF is doing you can watch the log files, from the command line by running this
 
 > tail -f /${ddf.home}/data/log/ddf.log
 
