@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="niceApiUser"  class="lockc.osgi.examples.maven.myproject.user.impl.NiceApiUser" init-method="startUp">
+        <property name="niceApiService" ref="niceApiService"/>
+        <property name="name" value="Chris"/>
+    </bean>
+
+    <reference id="niceApiService" interface="lockc.osgi.examples.maven.myproject.api.NiceApi" />
+
+</blueprint>

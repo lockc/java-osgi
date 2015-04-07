@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="customPostQueryPlugin"
+        class="lockc.osgi.ddf.metacard.CustomPostQueryPluginImpl" />
+
+    <service ref="customPostQueryPlugin" id="customPostQueryPluginService"
+        interface="ddf.catalog.plugin.PostQueryPlugin">
+        <service-properties>
+            <entry key="id" value="custom" />
+        </service-properties>
+    </service>
+
+</blueprint>

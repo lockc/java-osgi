@@ -1,0 +1,29 @@
+{
+  "name": "ddf-subscriptions-ui",
+  "version": "1.0.0-SNAPSHOT",
+  "dependencies": {
+    "angular": "1.2.27",
+    "json3": "3.3.1",
+    "bootstrap": "3.2.0",
+    "angular-resource": "1.2.0",
+    "angular-sanitize": "1.2.0",
+    "angular-route": "1.2.0",
+    "moment": "2.8.3",
+    "components-font-awesome": "4.2.0",
+    "angular-bootstrap": "0.11.2",
+    "jquery": "1.11.1",
+    "angular-ui-select": "0.8.2",
+    "ng-table": "0.3.1",
+    "angular-bootstrap-datetimepicker": "0.3.0",
+    "angular-ui-router": "0.2.13",
+    "angular-cookies": "1.2.26",
+    "angular-bindonce": "0.3.1",
+    "angular-ui-utils": "bower"
+  },
+  "devDependencies": {
+  
+  },
+  "resolutions": {
+    "angular": "1.2.27"
+  }
+}

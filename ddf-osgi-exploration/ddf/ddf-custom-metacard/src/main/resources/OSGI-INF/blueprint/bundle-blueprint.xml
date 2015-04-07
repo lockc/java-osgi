@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="customXmlInputTransformer"
+        class="lockc.osgi.ddf.metacard.CustomXmlInputTransformer" />
+
+    <service ref="customXmlInputTransformer" id="customXmlInputTransformerService"
+        interface="ddf.catalog.transform.InputTransformer">
+        <service-properties>
+            <entry key="shortname" value="CustomXMLTransformer" />
+            <entry key="title" value="Custom XML Input Transformer" />
+            <entry key="description" value="A custom XML input transformer with new metacard attribute" />
+            <entry key="id" value="custom" />
+            <entry key="mime-type">
+                <list>
+                    <value>application/xml</value>
+                </list>
+            </entry>
+        </service-properties>
+    </service>
+
+</blueprint>

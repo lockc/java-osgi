@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>lockc.osgi.ddf.examples</groupId>
+    <artifactId>ddf-examples-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.7</java.version>
+        <ddf.version>2.6.0</ddf.version>
+        <osgi.version>6.0.0</osgi.version>
+        <geotools.version>13-RC1</geotools.version>
+        <exam.version>4.4.0</exam.version>
+        <url.version>2.4.0</url.version>
+    </properties>
+    
+    <modules>
+        <module>ddf-custom-metacard</module>
+        <module>ddf-custom-post-query-plugin</module>
+        <module>ddf-custom-feature</module>
+        <module>ddf-xml-input-transformer</module>
+        <module>ddf-eventing</module>
+        <module>ddf-eventing-ui</module>
+    </modules>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${osgi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.compendium</artifactId>
+                <version>5.0.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.aries.blueprint</groupId>
+                <artifactId>org.apache.aries.blueprint.annotation.api</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ddf.catalog.core</groupId>
+                <artifactId>catalog-core-api</artifactId>
+                <version>${ddf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ddf.catalog.core</groupId>
+                <artifactId>filter-proxy</artifactId>
+                <version>${ddf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.geotools</groupId>
+                <artifactId>gt-opengis</artifactId>
+                <version>${geotools.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.geotools</groupId>
+                <artifactId>gt-brewer</artifactId>
+                <version>${geotools.version}</version>
+            </dependency>
+
+
+            <!-- Test Dependencies -->
+
+            <dependency>
+                <groupId>ddf.distribution</groupId>
+                <artifactId>ddf</artifactId>
+                <version>${ddf.version}</version>
+                <type>zip</type>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.karaf.shell</groupId>
+                <artifactId>org.apache.karaf.shell.osgi</artifactId>
+                <version>2.3.8</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-container-karaf</artifactId>
+                <version>${exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-junit4</artifactId>
+                <version>${exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam</artifactId>
+                <version>${exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-link-mvn</artifactId>
+                <version>${exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ops4j.pax.url</groupId>
+                <artifactId>pax-url-aether</artifactId>
+                <version>${url.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+                <scope>test</scope>
+            </dependency>
+
+
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.4</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.5.3</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.18.1</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+    <distributionManagement>
+
+        <snapshotRepository>
+            <id>artifactory-snapshots</id>
+            <name>artifactory-snapshots</name>
+            <url>http://esdbs-ddfhk5:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+
+        <repository>
+            <id>artifactory-releases</id>
+            <name>artifactory-releases</name>
+            <url>http://esdbs-ddfhk5:8081/artifactory/libs-release-local</url>
+        </repository>
+
+    </distributionManagement>
+    
+</project>
+

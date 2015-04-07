@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="subscriptionsApp">
+<head>
+  <meta charset="utf-8">
+  <title>My HTML File</title>
+  
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="app/js/subscriptions.js"></script>
+</head>
+
+<body ng-controller="SubscriptionsCtrl">
+
+  <h1>Subscription Management.</h1>
+  <ul>
+    <li ng-repeat="subscription in subscriptions">{{subscription}}</li>
+  </ul>
+  
+  
+
+  <p>Nothing here {{'yet' + '!'}}</p>
+
+</body>
+
+</html>

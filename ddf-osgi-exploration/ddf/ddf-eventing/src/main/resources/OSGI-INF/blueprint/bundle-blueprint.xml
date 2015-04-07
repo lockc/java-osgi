@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+            http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
+
+    <reference id="filterBuilder" interface="ddf.catalog.filter.FilterBuilder"/>
+
+
+    <bean id="sampleSubscriptionService"
+        class="lockc.osgi.ddf.eventing.impl.SampleSubscriptionServiceImpl">
+        
+        <property name="bundleContext" ref="blueprintBundleContext"/>
+        <property name="filterBuilder" ref="filterBuilder"/>
+    </bean>
+
+    <service ref="sampleSubscriptionService" id="sampleService"
+        interface="lockc.osgi.ddf.eventing.api.SampleSubscriptionService">
+        <service-properties>
+            <entry key="shortname" value="SampleSubscriptionService" />
+            <entry key="title" value="Sample Subscription Service" />
+        </service-properties>
+    </service>
+    
+    <bean id="sampleRestService" class="lockc.osgi.ddf.eventing.impl.SampleSubscriptionEndpoint"> 
+        <property name="sampleSubscriptionService" ref="sampleSubscriptionService" />
+    </bean>
+    
+    <jaxrs:server id="restService" address="/">
+        <jaxrs:serviceBeans>
+            <ref component-id="sampleRestService" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+ 
+
+</blueprint>

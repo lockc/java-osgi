@@ -21,6 +21,7 @@ public class Options {
     
         //@formatter:off
         return composite(
+//                debugConfiguration(),
                 karafDistributionConfiguration(maven("ddf.distribution", "ddf", "2.6.0")
                             .type("zip").getURL(), 
                         "ddf", "2.3.8")

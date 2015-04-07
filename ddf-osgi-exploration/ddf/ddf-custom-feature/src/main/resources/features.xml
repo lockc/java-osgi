@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}">
+
+    <feature name='ddf-custom-metacard' version='${project.version}'>
+        <bundle>mvn:lockc.osgi.ddf.examples/ddf-custom-metacard/${project.version}</bundle>
+    </feature>
+    
+    <feature name='ddf-custom-post-query-plugin' version='${project.version}'>
+        <bundle>mvn:lockc.osgi.ddf.examples/ddf-custom-post-query-plugin/${project.version}</bundle>
+    </feature>
+
+</features>
