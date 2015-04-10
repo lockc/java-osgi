@@ -21,6 +21,7 @@
         <module>ddf-custom-metacard</module>
         <module>ddf-custom-post-query-plugin</module>
         <module>ddf-custom-feature</module>
+        <module>ddf-camel-example</module>
         <module>ddf-xml-input-transformer</module>
         <module>ddf-eventing</module>
         <module>ddf-eventing-ui</module>

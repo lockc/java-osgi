@@ -1,0 +1,57 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+           xmlns:camel="http://camel.apache.org/schema/blueprint"
+           xsi:schemaLocation="
+             http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+             http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+             ">
+    
+    <!-- 
+        OSGi services
+     -->
+    <reference id="filterBuilder" interface="ddf.catalog.filter.FilterBuilder"/>
+    
+    <reference id="metacardTransformer" interface="ddf.catalog.transform.MetacardTransformer" filter="id=xml" />
+
+    <!-- 
+        Bean definitions
+     -->
+    <bean id="jms"
+        class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL"
+                    value="vm://localhost?broker.persistent=false" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="explicitContentRouteBuilder" class="lockc.osgi.ddf.camel.ExplicitContentRouteBuilder" />
+
+    <bean id="explicitContentDeliveryMethod" class="lockc.osgi.ddf.camel.ExplicitContentDeliveryMethod" >
+        <property name="transformer" ref="metacardTransformer"/>
+    </bean>
+    
+    <bean id="explicitContentSubscription" 
+        class="lockc.osgi.ddf.camel.ExplicitContentSubscription"
+        init-method="init">
+        
+        <property name="bundleContext" ref="blueprintBundleContext"/>
+        <property name="filterBuilder" ref="filterBuilder"/>
+        <property name="deliveryMethod" ref="explicitContentDeliveryMethod"/>
+    </bean>
+    
+    
+    <!-- 
+        Camel context definition
+     -->
+    <camel:camelContext id="camelContext">
+                
+        <camel:contextScan />
+        
+    </camel:camelContext>
+    
+    
+
+</blueprint>
